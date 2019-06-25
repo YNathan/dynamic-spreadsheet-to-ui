@@ -1,0 +1,16 @@
+<section class="center" style="min-width: 1000px">
+  <mat-form-field class="trip_id_size">
+    <input matInput placeholder="הכנס מייל משתמש" [(ngModel)]="userPrefix"
+           (keydown)="keyDownFunction($event)">
+  </mat-form-field>
+
+
+  <div *ngFor="let user of suggestedUsers">
+    <mat-form-field class="emsilSection">
+      <input matInput [(ngModel)]="user.email">
+    </mat-form-field>
+    <mat-form-field class="lavelSection">
+      <input matInput [(ngModel)]="user.authorisation_level"
+             (ngModelChange)="authorisationLavelChange(user.id,user.authorisation_level)" type="number">
+    </mat-form-field>
+  </div>

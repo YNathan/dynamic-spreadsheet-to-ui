@@ -1,0 +1,24 @@
+<div style="text-align:center">
+  <a href="http://speakerphone.co.il/"> <img width="300" alt="Angular Logo" src="sfLogo.png"></a>
+</div>
+
+<form class="center">
+    <div *ngFor="let col of chosenColumns">
+        <mat-form-field [ngStyle]="{'width':'100%'}">
+            <mat-select placeholder="{{col.key}}" [(ngModel)]="col.value" name="{{col.key}}"
+            (selectionChange)="getNextData(col.key,col.value)">
+            <mat-option *ngFor="let prmSelec of col.option" [value]="prmSelec">
+              &nbsp;&nbsp;&nbsp;&nbsp; {{prmSelec}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    </div>
+
+
+  <ul>
+    <li *ngFor="let dt of dataList">
+      {{dt}} &nbsp;&nbsp; {{data[0][dt]}}
+    </li>
+  </ul>
+</form>

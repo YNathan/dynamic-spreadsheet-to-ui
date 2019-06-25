@@ -1,0 +1,65 @@
+<section class="instruction-text">
+  <div>א) השורה הראשונה באקסל צריכה להיות שורת העמודות [כלומר: חברה,מחיר,שם מוצר וכו,] </div>
+  <div>ב) צריך ששמות העמודות יהיו זהים בכל טבלה</div>
+  <div>ג) תצתרך לבחור איזה סוג עמודה זו האם היא עמודת טקסט או מספרי [לרוב מספרי ישמש למחיר]</div>
+</section>
+<br><br><br><br>
+
+<mat-card>
+  <section class="flex-container">
+
+    <div class="flex-container-element tables-name-scrol-section">
+      <section class="title-text">הטבלאות שיוצגו</section>
+      <section class="scroller-section">
+        <div *ngFor="let tableName of spreadsheetTablesNames">
+          <mat-form-field>
+            <input matInput [(ngModel)]="tableName.name">
+          </mat-form-field>
+          <mat-checkbox class="example-margin" [(ngModel)]="tableName.checked"></mat-checkbox>
+        </div>
+      </section>
+    </div>
+    <div class="flex-container-element tables-name-scrol-section">
+      <section class="title-text">העמודות שיוצגו</section>
+      <section class="scroller-section">
+        <div *ngFor="let column of spreadsheetColumnsNames">
+          <mat-form-field>
+            <input matInput [(ngModel)]="column.name">
+          </mat-form-field>
+          <mat-form-field style="max-width: 120px">
+              <mat-label>עמודת טקסט או מספר</mat-label>
+              <mat-select [(value)]="column.type_kind">
+                <mat-option value="string">טקסט</mat-option>
+                <mat-option value="number">מספרי</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+          <mat-checkbox class="example-margin" [(ngModel)]="column.checked"></mat-checkbox>
+        </div>
+      </section>
+    </div>
+
+    <!--div class="flex-container-element tables-name-scrol-section" >
+    <section class="title-text">העמודות שיוצגו</section>
+
+      
+    <section class="scroller-section">
+      <div *ngFor="let column of spreadsheetColumnsNames">
+        <mat-form-field style="max-width: 100px">
+          <input matInput [(ngModel)]="column.name">
+        </mat-form-field>
+        <mat-form-field style="max-width: 120px">
+            <mat-label>עמודת טקסט או מספר</mat-label>
+            <mat-select [(value)]="column.type_kind">
+              <mat-option value="number">מספרי</mat-option>
+              <mat-option value="string">טקסט</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-checkbox class="example-margin" [(ngModel)]="column.public_display"> <mat-label>לכולם</mat-label></mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="column.vip_display"><mat-label>ל-vip</mat-label></mat-checkbox>
+      </div>
+    </section>
+  </div-->
+  </section>
+  <button class="buttom-save-button" (click)="updateTableStructure()" >עדכן טבלאות</button>
+</mat-card>

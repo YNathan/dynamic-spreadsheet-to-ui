@@ -1,0 +1,27 @@
+<ul class="topnav">
+  <li>
+    <a class="active" href="main-app"><img src="../favicon.ico" [ngStyle]="{'max-height':'55px'}"/></a>
+  </li>
+  <li *ngIf="globals.authorizationLevel > 1"><a routerLink="/users" class="menuFont"><img src="../assets/users.svg"
+                                                                                          [ngStyle]="{'max-height':'55px','width': '43px','max-height': '55px','border': '2px solid black','border-radius': '50px'}"/></a>
+  </li>
+  <li *ngIf="globals.authorizationLevel > 1"><a routerLink="/excel-managment" class="menuFont"><img src="../assets/excel.svg"
+                                                                                          [ngStyle]="{'max-height':'55px','width': '43px','max-height': '55px','border': '2px solid black','border-radius': '50px'}"/></a>
+  </li>
+  <li *ngIf="!authorized" class="right" style="padding : 14px 16px">
+    <button (click)="socialSignIn('google')" class="btn btn-primary my-2">כנס/י דרך חשבון הגוגל שלך</button>
+  </li>
+  <li *ngIf="authorized" class="right" style="padding : 14px 16px"><img src="{{user.image}}" class="profilePicture">
+  </li>
+  <li *ngIf="authorized" class="right" style="padding : 30px 16px">{{user.name}} </li>
+</ul>
+
+<router-outlet></router-outlet>
+<div class="watermark">
+  @JackNathan products
+</div>
+
+<div *ngIf="authorized" class="sign-out-btn-position">
+  <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+</div>
+
